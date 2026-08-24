@@ -1,0 +1,16 @@
+{
+  "name": "elkahmed-business",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Elkahmed Business monorepo — customer site, dashboard app and shared packages",
+  "scripts": {
+    "dev:customer": "pnpm --filter @elkahmed/customer dev",
+    "dev:dashboard": "pnpm --filter @elkahmed/dashboard dev",
+    "build:customer": "pnpm --filter @elkahmed/customer build",
+    "build:dashboard": "pnpm --filter @elkahmed/dashboard build",
+    "lint": "pnpm -r run lint"
+  },
+  "engines": {
+    "node": ">=18.17.0"
+  }
+}
