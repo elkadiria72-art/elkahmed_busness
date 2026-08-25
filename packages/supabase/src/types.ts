@@ -35,6 +35,21 @@ export type SettingsRow = {
   updated_at: string | null;
 };
 
+/** Mirrors the `requests` table from 0001_dashboard_module.sql. */
+export type RequestRow = {
+  id: number;
+  name: string;
+  email: string;
+  phone: string;
+  company: string | null;
+  need: string;
+  message: string;
+  budget: string | null;
+  deadline: string | null;
+  status: "new" | "reviewing" | "accepted" | "rejected";
+  created_at: string;
+};
+
 export type Database = {
   public: {
     Tables: {
@@ -42,6 +57,12 @@ export type Database = {
         Row: SettingsRow;
         Insert: Partial<SettingsRow>;
         Update: Partial<SettingsRow>;
+        Relationships: [];
+      };
+      requests: {
+        Row: RequestRow;
+        Insert: Partial<RequestRow>;
+        Update: Partial<RequestRow>;
         Relationships: [];
       };
       // Regenerate this file with:

@@ -55,11 +55,19 @@ export async function requireAdmin(): Promise<AdminGuardResult> {
     return { isAdmin: false, userId: null, email: null };
   }
 
-  const { data: profile } = await supabase
+  const { data: profile, error } = await supabase
     .from("profiles")
     .select("role")
     .eq("id", user.id)
     .maybeSingle();
+
+  // Fail closed (not admin), but make infrastructure failures visible —
+  // e.g. missing table grants return 42501 and would otherwise silently
+  // lock every user out of the dashboard.
+  if (error) {
+    console.error("[requireAdmin] profiles query failed:", error.message);
+    return { isAdmin: false, userId: user.id, email: user.email ?? null };
+  }
 
   return {
     isAdmin: profile?.role === "admin",

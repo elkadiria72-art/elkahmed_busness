@@ -1,5 +1,7 @@
 import { ShieldAlert } from "lucide-react";
 
+import { SignOutButton } from "@/components/SignOutButton";
+
 /**
  * Rendered when the signed-in user is not an admin. Receives no props and
  * triggers no queries — nothing about the app's data is exposed here.
@@ -17,6 +19,7 @@ export function AccessDenied() {
         Your account does not have administrator permissions. If you believe this
         is a mistake, ask an existing admin to promote your account.
       </p>
+      <SignOutButton />
     </div>
   );
 }
