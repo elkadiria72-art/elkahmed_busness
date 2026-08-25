@@ -10,7 +10,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@elkahmed/supabase": "workspace:*",
     "@supabase/ssr": "^0.8.0",
     "@supabase/supabase-js": "^2.45.4",
     "lucide-react": "^0.454.0",
